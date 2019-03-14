@@ -20,4 +20,29 @@ output:(-3 6 1)
 input:(uvelichit '())
 output:(NIL) 
 ```
+Задача 11
+----------
+Определите функцию, осуществляющую разделение исходного списка на два
+подсписка. В первый из них должно попасть указанное количество элементов
+с начала списка, во второй — оставшиеся элементы.
 
+```diff
+(defun F (L M)
+ (if L
+  (if (zerop M) (cons nil (cons L nil))
+   ((lambda (elem result)
+     (cons (cons elem (car result))
+      (cdr result)))
+    (car L)
+    (F (cdr L) (- M 1))))))
+ 
+(print (f '(a b c d e f g) 4))
+```
+```diff
+input:(f '(a b c d e f g) 0))
+output:(NIL) 
+```
+```diff
+input:(f '(a b c d e f g) 4)
+output:((A B C D) (E F G))
+```
