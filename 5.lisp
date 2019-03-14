@@ -1,6 +1,6 @@
-(defun inc(li)
+(defun uvelichit(list)
 	(cond 
-		( (null li) nil )
-		( t (cons (+(car li) 1) (inc(cdr li))) )
+		( (null list) nil )
+		( t (cons (+(car list) 1) (uvelichit(cdr list))) )
 	) 
 )
