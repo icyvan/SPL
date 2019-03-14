@@ -7,17 +7,17 @@
 ------
 Определите функцию, которая увеличивает элементы исходного списка на единицу.
 
-```diff
-(defun uvelichit(list)
+```list
+(defun increase(list)
 	(cond ( (null list) nil )
-		( t (cons (+(car list) 1) (uvelichit(cdr list))))))
+		( t (cons (+(car list) 1) (increase(cdr list))))))
 ```
 ```diff
-input:(uvelichit '(-4 5 0))
+input:(increase '(-4 5 0))
 output:(-3 6 1) 
 ```
 ```diff
-input:(uvelichit '())
+input:(increase '())
 output:(NIL) 
 ```
 Задача 11
@@ -27,20 +27,20 @@ output:(NIL)
 с начала списка, во второй — оставшиеся элементы.
 
 ```diff
-(defun F (L M)
- (if L
-  (if (zerop M) (cons nil (cons L nil))
+(defun divide (list length)
+ (if list
+  (if (zerop length) (cons nil (cons list nil))
    ((lambda (elem result)
      (cons (cons elem (car result))
       (cdr result)))
-    (car L)
-    (F (cdr L) (- M 1))))))
+    (car list)
+    (F (cdr list) (- length 1))))))
 ```
 ```diff
-input:(f '(a b c d e f g) 0))
+input:(divide '(a b c d e f g) 0))
 output:(NIL) 
 ```
 ```diff
-input:(f '(a b c d e f g) 4)
+input:(divide '(a b c d e f g) 4)
 output:((A B C D) (E F G))
 ```
