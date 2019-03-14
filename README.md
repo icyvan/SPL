@@ -35,8 +35,6 @@ output:(NIL)
       (cdr result)))
     (car L)
     (F (cdr L) (- M 1))))))
- 
-(print (f '(a b c d e f g) 4))
 ```
 ```diff
 input:(f '(a b c d e f g) 0))
