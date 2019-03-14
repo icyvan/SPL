@@ -31,8 +31,8 @@ output:(NIL)
  (if list
   (if (zerop length) (cons nil (cons list nil))
    ((lambda (elem result)
-     (cons (cons elem (car result))
-      (cdr result)))
+         (cons (cons elem (car result))
+         (cdr result)))
     (car list)
     (F (cdr list) (- length 1))))))
 ```
