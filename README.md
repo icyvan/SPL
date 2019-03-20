@@ -13,13 +13,46 @@
 		( t (cons (+(car list) 1) (increase(cdr list))))))
 ```
 ```diff
-input:(increase '(-4 5 0))
-output:(-3 6 1) 
+>(increase '(-4 5 0))
+(-3 6 1) 
 ```
 ```diff
-input:(increase '())
-output:(NIL) 
+>(increase '())
+(NIL) 
 ```
+Задача 9
+--------
+Определите функцию, разделяющую исходный список на два подсписка. В
+первый из них должны попасть элементы с нечетными номерами, во второй —
+элементы с четными номерами.
+
+```lisp
+(defun numb (x y)
+  (cond ((eq x (car y)) 0)
+        (t (+ 1 (numb x (cdr y))))))
+	
+(defun Even (d)
+    (if (= (mod d 2) 0) t nil))
+
+(defun Odd (d)
+    (if (/= (mod d 2) 0) t nil))
+
+(defun split (l) 
+	(list
+	    (mapcan (lambda (x) (if (Even (numb x l)) (list x) nil)) l)
+	    (mapcan (lambda (x) (if (Odd (numb x l)) (list x) nil)) l)	   
+))
+```
+
+```
+>(split '(2 t 5 1 10 9))
+((2 5 10) (T 1 9)) 
+```
+```
+>print(split '())
+(NIL NIL) 
+```
+
 Задача 11
 ----------
 Определите функцию, осуществляющую разделение исходного списка на два
@@ -37,10 +70,22 @@ output:(NIL)
     (F (cdr list) (- length 1))))))
 ```
 ```diff
-input:(divide '(a b c d e f g) 0))
-output:(NIL) 
+>(divide '(a b c d e f g) 0))
+(NIL) 
 ```
 ```diff
-input:(divide '(a b c d e f g) 4)
-output:((A B C D) (E F G))
+>(divide '(a b c d e f g) 4)
+((A B C D) (E F G))
 ```
+
+Задача 22
+--------------
+(defun reverse-levels (l)
+  (if (null (cdr l))
+      l
+      (list (reverse-levels (cdr l)) (car l))))
+	  
+	  
+	 
+(print (reverse-levels '(5 7 89 4 5 79)))
+
