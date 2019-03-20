@@ -105,8 +105,8 @@
   (cond ((null list) 0)
     ((atom (car list)) (+ 1 (atom-sum (cdr list))))
     (t (atom-sum (cdr list)))))
-    ```
-```	
+```
+```
 >(atom-sum '(2 91 f5 w 3 1))
 6
 ```
