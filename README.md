@@ -80,12 +80,41 @@
 
 Задача 22
 --------------
+Определите функцию, которая обращает список (а b с) и разбивает его на
+уровни (((с) b) а).
+
+```lisp
 (defun reverse-levels (l)
   (if (null (cdr l))
       l
       (list (reverse-levels (cdr l)) (car l))))
-	  
-	  
-	 
-(print (reverse-levels '(5 7 89 4 5 79)))
+```
+```
+>(reverse-levels '(a b c))
+(((C) B) A) 
+```
+```
+>(reverse-levels '(5 g 4 5 79))
+(((((79) 5) 4) G) 5) 
+```
 
+Задача 28
+-------------
+```lisp
+(defun atom-sum (list)
+  (cond ((null list) 0)
+    ((atom (car list)) (+ 1 (atom-sum (cdr list))))
+    (t (atom-sum (cdr list)))))
+    ```
+```	
+>(atom-sum '(2 91 f5 w 3 1))
+6
+```
+```
+>(atom-sum '(2 (3 6) 9 1 1))
+4
+```
+```
+>(atom-sum '( ))
+0
+```
