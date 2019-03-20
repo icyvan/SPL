@@ -7,7 +7,7 @@
 ------
 Определите функцию, которая увеличивает элементы исходного списка на единицу.
 
-```list
+```lisp
 (defun increase(list)
 	(cond ( (null list) nil )
 		( t (cons (+(car list) 1) (increase(cdr list))))))
@@ -26,7 +26,7 @@ output:(NIL)
 подсписка. В первый из них должно попасть указанное количество элементов
 с начала списка, во второй — оставшиеся элементы.
 
-```diff
+```lisp
 (defun divide (list length)
  (if list
   (if (zerop length) (cons nil (cons list nil))
