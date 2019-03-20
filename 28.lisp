@@ -1,4 +1,4 @@
-(defun atom-sum (list)
+(defun atom-sum (&optional list)
   (cond ((null list) 0)
     ((atom (car list)) (+ 1 (atom-sum (cdr list))))
     (t (atom-sum (cdr list)))))
