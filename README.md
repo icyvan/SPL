@@ -97,11 +97,30 @@
 >(reverse-levels '(5 g 4 5 79))
 (((((79) 5) 4) G) 5) 
 ```
+Задача 27
+---------------
+Определите функцию, которая, чередуя элементы списков (a b...) и (1 2...),
+образует новый список (a 1 b 2 ...).
+
+```lisp
+(defun alternate(&optional X Y)
+      (cond ( (NULL X) Y )
+            (   t   (cons (car x) (alternate y (cdr x))) )
+   ))
+```
+```
+>(alternate '(5 a 9) '(c b 3))
+(5 C A B 9 3) 
+```
+```
+>print(alternate '(8 g d 7 2) '(5 t y ))
+(8 5 G T D Y 7 2) 
+```
 
 Задача 28
 -------------
 ```lisp
-(defun atom-sum (list)
+(defun atom-sum (&optional list)
   (cond ((null list) 0)
     ((atom (car list)) (+ 1 (atom-sum (cdr list))))
     (t (atom-sum (cdr list)))))
