@@ -7,42 +7,114 @@
 ------
 Определите функцию, которая увеличивает элементы исходного списка на единицу.
 
-```diff
-(defun uvelichit(list)
+```lisp
+(defun increase(list)
 	(cond ( (null list) nil )
-		( t (cons (+(car list) 1) (uvelichit(cdr list))))))
+		( t (cons (+(car list) 1) (increase(cdr list))))))
 ```
 ```diff
-input:(uvelichit '(-4 5 0))
-output:(-3 6 1) 
+>(increase '(-4 5 0))
+(-3 6 1) 
 ```
 ```diff
-input:(uvelichit '())
-output:(NIL) 
+>(increase '())
+(NIL) 
 ```
+Задача 9
+--------
+Определите функцию, разделяющую исходный список на два подсписка. В
+первый из них должны попасть элементы с нечетными номерами, во второй —
+элементы с четными номерами.
+
+```lisp
+(defun numb (x y)
+  (cond ((eq x (car y)) 0)
+        (t (+ 1 (numb x (cdr y))))))
+	
+(defun Even (d)
+    (if (= (mod d 2) 0) t nil))
+
+(defun Odd (d)
+    (if (/= (mod d 2) 0) t nil))
+
+(defun split (l) 
+	(list
+	    (mapcan (lambda (x) (if (Even (numb x l)) (list x) nil)) l)
+	    (mapcan (lambda (x) (if (Odd (numb x l)) (list x) nil)) l)	   
+))
+```
+
+```
+>(split '(2 t 5 1 10 9))
+((2 5 10) (T 1 9)) 
+```
+```
+>print(split '())
+(NIL NIL) 
+```
+
 Задача 11
 ----------
 Определите функцию, осуществляющую разделение исходного списка на два
 подсписка. В первый из них должно попасть указанное количество элементов
 с начала списка, во второй — оставшиеся элементы.
 
-```diff
-(defun F (L M)
- (if L
-  (if (zerop M) (cons nil (cons L nil))
+```lisp
+(defun divide (list length)
+ (if list
+  (if (zerop length) (cons nil (cons list nil))
    ((lambda (elem result)
-     (cons (cons elem (car result))
-      (cdr result)))
-    (car L)
-    (F (cdr L) (- M 1))))))
- 
-(print (f '(a b c d e f g) 4))
+         (cons (cons elem (car result))
+         (cdr result)))
+    (car list)
+    (F (cdr list) (- length 1))))))
 ```
 ```diff
-input:(f '(a b c d e f g) 0))
-output:(NIL) 
+>(divide '(a b c d e f g) 0))
+(NIL) 
 ```
 ```diff
-input:(f '(a b c d e f g) 4)
-output:((A B C D) (E F G))
+>(divide '(a b c d e f g) 4)
+((A B C D) (E F G))
+```
+
+Задача 22
+--------------
+Определите функцию, которая обращает список (а b с) и разбивает его на
+уровни (((с) b) а).
+
+```lisp
+(defun reverse-levels (l)
+  (if (null (cdr l))
+      l
+      (list (reverse-levels (cdr l)) (car l))))
+```
+```
+>(reverse-levels '(a b c))
+(((C) B) A) 
+```
+```
+>(reverse-levels '(5 g 4 5 79))
+(((((79) 5) 4) G) 5) 
+```
+
+Задача 28
+-------------
+```lisp
+(defun atom-sum (list)
+  (cond ((null list) 0)
+    ((atom (car list)) (+ 1 (atom-sum (cdr list))))
+    (t (atom-sum (cdr list)))))
+    ```
+```	
+>(atom-sum '(2 91 f5 w 3 1))
+6
+```
+```
+>(atom-sum '(2 (3 6) 9 1 1))
+4
+```
+```
+>(atom-sum '( ))
+0
 ```
