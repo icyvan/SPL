@@ -122,9 +122,10 @@
 -------------
 ```lisp
 (defun atom-sum (&optional list)
+    ((lambda (x) (setq last (cdr x))) list)
   (cond ((null list) 0)
-    ((atom (car list)) (+ 1 (atom-sum (cdr list))))
-    (t (atom-sum (cdr list)))))
+    ((atom (car list)) (+ 1 (atom-sum last)))
+    (t (atom-sum last))))
 ```
 ```
 >(atom-sum '(2 91 f5 w 3 1))
