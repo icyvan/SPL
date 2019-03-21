@@ -1,3 +1,6 @@
+;ќпределите функцию, котора€, череду€ элементы списков (a b...) и (1 2...),
+;образует новый список (a 1 b 2 ...).
+
 (defun alternate(&optional X Y)
       (cond ( (NULL X) Y )
             (   t   (cons (car x) (alternate y (cdr x))) )
