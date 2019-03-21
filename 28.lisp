@@ -1,6 +1,6 @@
 ;Определите функцию, вычисляющую, сколько всего атомов в списке (списочной структуре).
  
-(defun atom-sum (&optional list)
+(defun atom-sum (list)
     ((lambda (x) (setq last (cdr x))) list)
   (cond ((null list) 0)
     ((atom (car list)) (+ 1 (atom-sum last)))
