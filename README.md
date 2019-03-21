@@ -85,9 +85,10 @@
 
 ```lisp
 (defun reverse-levels (l)
-  (if (null (cdr l))
+     ((lambda (x) (setq last (cdr x))) l)
+  (if (null last)
       l
-      (list (reverse-levels (cdr l)) (car l))))
+      (list (reverse-levels last) (car l))))
 ```
 ```
 >(reverse-levels '(a b c))
