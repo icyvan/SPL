@@ -3,8 +3,9 @@
 
 (defun alternate(X &optional  Y)
       (cond ( (NULL X) Y )
-            (   t   (cons (car x) (alternate y (cdr x))) )
-   ))
+            (t (cons (car x) (alternate y (cdr x))) )
+            )
+      )
    
    
 (print(alternate '(5 a 9) '(c b 3)))
