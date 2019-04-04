@@ -2,10 +2,10 @@
 ;уровни (((с) b) а).
 
 
-(defun reverse-levels (l)
-    ((lambda (last) (if (null last)
-        l
-        (list (reverse-levels last) (car l)))) (cdr l)))
+(defun reverse-levels (lst)
+    ((lambda (last) 
+	     (if (null last) lst
+        (list (reverse-levels last) (car lst)))) (cdr lst)))
 
 	 
 (print (reverse-levels '(5 7 89 4 5 79)))        
