@@ -9,4 +9,5 @@
         (list (reverse-levels last) (car l))))
 
 	 
-(print (reverse-levels '(5 7 89 4 5 79)))
+(print (reverse-levels '(5 7 89 4 5 79)))        ;((((((79) 5) 4) 89) 7) 5) 
+ 
