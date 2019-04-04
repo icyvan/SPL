@@ -1,9 +1,10 @@
 ;Определите функцию, вычисляющую, сколько всего атомов в списке (списочной структуре).
  
 (defun atom-sum (list)
-    ((lambda (last) (cond ((null list) 0)
-    ((atom (car list)) (+ 1 (atom-sum last)))
-    (t (atom-sum last)))) (cdr list))
+    ((lambda (last) 
+	     (cond ((null list) 0)
+		     ((atom (car list)) (+ 1 (atom-sum last)))
+		     (t (atom-sum last)))) (cdr list))
   )
 
 	
