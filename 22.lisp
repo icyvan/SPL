@@ -3,10 +3,9 @@
 
 
 (defun reverse-levels (l)
-    ((lambda (x) (setq last (cdr x))) l)
-    (if (null last)
+    ((lambda (last) (if (null last)
         l
-        (list (reverse-levels last) (car l))))
+        (list (reverse-levels last) (car l)))) (cdr l)))
 
 	 
 (print (reverse-levels '(5 7 89 4 5 79)))        
