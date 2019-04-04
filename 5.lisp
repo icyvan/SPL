@@ -7,5 +7,6 @@
 	) 
 )
 
-(print (increase '(-4 5 0)))
-(print (increase '()))
+(print (increase '(-4 5 0)))         ;(-3 6 1) 
+
+(print (increase '()))               ;NIL 
