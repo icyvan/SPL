@@ -8,4 +8,8 @@
    
    
 (print(alternate '(5 a 9) '(c b 3)))
-(print(alternate '(8 g d 7 2) '(5 t y )))
+;>(5 C A B 9 3)
+
+(pr(5 C A B 9 3) 
+int(alternate '(8 g d 7 2) '(5 t y )))
+;>(8 5 G T D Y 7 2) 
