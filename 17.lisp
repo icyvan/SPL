@@ -15,7 +15,7 @@
         ( (null perm-lst) nil)
         (t (append
                 (insert-elem-to-each-pos elem (car perm-lst))
-                (add-elem-to-each-permutation elem (cdr perm-lst) ) ;соединяем все перестановки в список
+                (add-elem-to-each-permutation elem (cdr perm-lst) )  
 ) 
         )
      )
