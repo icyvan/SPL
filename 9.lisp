@@ -2,22 +2,21 @@
 ;В первый из них должны попасть элементы с нечетными номерами, во второй — элементы с четными номерами.
 
 
-(defun numb (x y)
-  (cond ((eq x (car y)) 0)
-        (t (+ 1 (numb x (cdr y))))))
+(defun even-odd (lst)
+    (cond
+        ((null (car lst)) lst)
+        (t
+         (setq two-lst (even-odd (cddr lst)))
+         (list
+          (cons (car lst) (car two-lst))
+          (cons (cadr lst) (cadr two-lst))
+          )
+         )
+        )
+    )
 
+(print (even-odd `(1 2 3 4 5 6 )))
+;>((1 3 5) (2 4 6)) 
 
-(defun Even (d)
-    (if (= (mod d 2) 0) t nil))
-
-(defun Odd (d)
-    (if (/= (mod d 2) 0) t nil))
-
-(defun split (l) 
-	(list
-	    (mapcan (lambda (x) (if (Even (numb x l)) (list x) nil)) l)
-	    (mapcan (lambda (x) (if (Odd (numb x l)) (list x) nil)) l)	   
-))
-
-(print(split '(2 t 5 1 10 9)))
-(print(split '()))
+(print (even-odd `(q w e r t y)))
+;>((Q E T) (W R Y)) 
