@@ -12,8 +12,8 @@
 )
 
 ;Добавляет элемент во все перестановки
-;>(1 в (2 3)(3 2))
-;((1 2 3)(2 1 3)(2 3 1)(1 3 2)....
+;>(1 и (2 3))
+;
 (defun add-elem-to-each-permutation (elem perm-lst)
     (cond
         ( (null perm-lst) nil)
@@ -26,8 +26,10 @@
 )   
 
 ;Вспомогательная функция вставки элементов в каждую позицию
-;>(1 и (2 3) (3 2))
-;((1 2 3)(2 1 3)(2 3 1))....
+;(1 и (nil) (2 3))
+;>(1 (2) (3))
+; (1 (2 3) nil)
+;
 (defun insert-elem-to-each-pos-aux (elem lst1 lst2)
     (cond
         ( ( null lst2) nil)
@@ -49,7 +51,7 @@
 
 ;Проверка на атомарность, если функция атомарна, то оборачиваем листом
 (defun insert-elem-to-each-pos (elem lst)
-    
+    ;если 1 2 3 атом, то (1 2 3)
     (cond
         ( (null lst) (list elem) )
         ( (atom lst) (insert-elem-to-each-pos elem (list lst) ) )
