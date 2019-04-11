@@ -20,7 +20,12 @@
 )
  
 (print (subset '(1 2) '(f 1 t 3 5 2)))
+;> T
 (print (subset '(d 1) '(f 5 2 d i x)))
+;> NIL
 (print (subset '( ) '(f 5 2 d i x)))
+;> T
 (print (own-subset nil '(4 3)))
+;> NIL
 (print (own-subset '(4 3) '(4 3)))
+;> NIL
