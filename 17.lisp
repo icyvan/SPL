@@ -13,7 +13,7 @@
 
 ;Добавляет элемент во все перестановки
 ;>(1 и (2 3))
-;
+;((1 2 3)(2 1 3)(2 3 1))....
 (defun add-elem-to-each-permutation (elem perm-lst)
     (cond
         ( (null perm-lst) nil)
@@ -26,8 +26,8 @@
 )   
 
 ;Вспомогательная функция вставки элементов в каждую позицию
-;(1 и (nil) (2 3))
-;>(1 (2) (3))
+;(1 (nil) (2 3))
+; (1 (2) (3))
 ; (1 (2 3) nil)
 ;
 (defun insert-elem-to-each-pos-aux (elem lst1 lst2)
