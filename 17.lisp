@@ -6,12 +6,13 @@
     (cond
         ( (null lst) nil)
         ( (null (cdr lst) ) (list lst))
+        ;разделяет голову с хвостом
         ( t (add-elem-to-each-permutation (car lst) (permutation (cdr lst) ) ) )
     )
 )
 
-;Добавляем элемент во все перестановки
-;>(1(2 3)(3 2))
+;Добавляет элемент во все перестановки
+;>(1 в (2 3)(3 2))
 ;((1 2 3)(2 1 3)(2 3 1)(1 3 2)....
 (defun add-elem-to-each-permutation (elem perm-lst)
     (cond
@@ -25,6 +26,8 @@
 )   
 
 ;Вспомогательная функция вставки элементов в каждую позицию
+;>(1 и (2 3) (3 2))
+;((1 2 3)(2 1 3)(2 3 1))....
 (defun insert-elem-to-each-pos-aux (elem lst1 lst2)
     (cond
         ( ( null lst2) nil)
