@@ -1,5 +1,6 @@
 ;Создайте предикат, порождающий всевозможные перестановки исходного множества
 
+;Функция перестановки
 (defun permutation (lst)
     
     (cond
@@ -9,8 +10,10 @@
     )
 )
 
+;Добавляем элемент во все перестановки
+;>(1(2 3)(3 2))
+;((1 2 3)(2 1 3)(2 3 1)(1 3 2)....
 (defun add-elem-to-each-permutation (elem perm-lst)
-    
     (cond
         ( (null perm-lst) nil)
         (t (append
@@ -20,19 +23,9 @@
         )
      )
 )   
-        
-(defun insert-elem-to-each-pos (elem lst)
-    
-    (cond
-        ( (null lst) (list elem) )
-        ( (atom lst) (insert-elem-to-each-pos elem (list lst) ) )
-        ( t (cons 
-             (cons elem lst) (insert-elem-to-each-pos-aux elem nil lst) ) ) 
-    )
-)
 
+;Вспомогательная функция вставки элементов в каждую позицию
 (defun insert-elem-to-each-pos-aux (elem lst1 lst2)
-    
     (cond
         ( ( null lst2) nil)
         ( t ( (lambda (a)
@@ -50,6 +43,18 @@
               ) lst1 lst2)))
     )
 )
+
+;Проверка на атомарность, если функция атомарна, то оборачиваем листом
+(defun insert-elem-to-each-pos (elem lst)
+    
+    (cond
+        ( (null lst) (list elem) )
+        ( (atom lst) (insert-elem-to-each-pos elem (list lst) ) )
+        ( t (cons 
+             (cons elem lst) (insert-elem-to-each-pos-aux elem nil lst) ) ) 
+    )
+)
+
 
 
 (print (permutation '(1 2 3)))
