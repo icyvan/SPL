@@ -1,10 +1,10 @@
 -- 1. Реализовать на языке Haskell функцию вычисления суммы элементов списка
 
-sum_list :: [Int] -> Int
-sum_list (x) = foldl1  (+)  x
+mysum [] = 0
+mysum (x:y) = x + mysum y
 
-main = print $ sum_list [1 , 2 , 3 , 4]
--- > 10
+main = print $ mysum [1, 2, 3, 4, 5 ]
+-- >15
 
 
 
