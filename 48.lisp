@@ -5,6 +5,10 @@
 (setf (get 'books 'author) '(John Green))
 (setf (get 'books 'publisher) '(Dutton Books))
 
-(print (get 'books 'year))
-(print (get 'books 'author))
-(print (get 'books 'publisher
+(defun property (x y)
+    (if (eq (get x y) nil ) nil t)
+    )
+
+(print (property 'books 'year))
+(print (property 'books 'author))
+(print (property 'books 'publisher))
