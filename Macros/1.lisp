@@ -1,6 +1,7 @@
 ;1. Определите макрос, который возвращает свой вызов.
 
-(defmacro self (&rest x)
-  `(quote (self ,x)))
+(defmacro self-call (&rest x)
+  `(quote (self-call ,x)))
 
-(print (self a b (+ a b)))
+(print (self-call a b (+ a b)))
+;=>(SELF-CALL (A B (+ A B))) 
