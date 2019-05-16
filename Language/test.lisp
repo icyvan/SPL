@@ -8,7 +8,7 @@
 
 ;Geminum-rovelio - заклинание, подсчитывающее присудсвующие объекты.
 (-----& (1 2 dr 4 6 g6) geminum-rovelio print)
-'=>6 
+;=>6 
 
 ;Geminio - заклинание умножения вдове
 (-----& (1 2 3) geminio print)
